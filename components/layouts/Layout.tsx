@@ -36,6 +36,9 @@ export const Layout: FC<Props> = ({ children, title }) => {
         else if (asPath == '/login') {
             setLayoutClassName(styles.login);
         }
+        else if (asPath == '/home') {
+            setLayoutClassName(styles.home);
+        }
         // else if ( asPath == '/data/surface-context' ) { 
         //     setProp1ForPage1( styles.data );
         //     setBooleanProp2ForPage1( true );

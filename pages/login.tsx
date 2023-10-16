@@ -1,16 +1,20 @@
 import { useState, useContext } from 'react'
 import { NextPage } from 'next';
+import { useRouter } from 'next/router';
 import { Layout } from '@/components/layouts';
 import { Container, Form, Button } from 'react-bootstrap';
 import { LayoutContext } from '@/context/layout';
 
 import styles from './styles.module.css';
 import { hashPassword } from '@/helpers';
+import { toast } from 'react-toastify';
 
 const Login: NextPage = () => {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const { isDarkTheme, setIsLogged } = useContext(LayoutContext);
+    const router = useRouter()
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault(); // Prevenir recargar la página
@@ -35,14 +39,36 @@ const Login: NextPage = () => {
         const data = await response.json();
 
         if (response.status === 200) {
-            console.log(data.message);
-            // Aquí puedes redirigir al usuario o hacer cualquier otra acción requerida.
+            router.push('/home');
+            setIsLogged( true );
+            toast.success('Login Successfully!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: isDarkTheme ? "dark" : "light",
+            });
+            localStorage.setItem('token', 'success');
+            // console.log(data.message);
         } else {
+            toast.error('Username or password incorrect!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: isDarkTheme ? "dark" : "light",
+            });
             console.error(data.error);
             // Mostrar un mensaje de error o realizar alguna otra acción.
         }
     }
-    const { isDarkTheme } = useContext(LayoutContext);
+    
 
     // const handleSubmit = async (e: React.FormEvent) => {
     //     e.preventDefault();

@@ -4,17 +4,17 @@
 .home {
     height: auto; /* TODO: Para el alto del contenido main */ /* 400 vh without extra components  */
     /* border: 1px black solid; */
-    background-color: antiquewhite;
+    background-color: transparent;
 }
 
-.index {
+.index, .login, .home {
     height: 100vh;
 }
 
-.login {
+/* .login {
     background-color: transparent;
     height: 100vh;
-}
+} */
 
 
 .dark-theme {

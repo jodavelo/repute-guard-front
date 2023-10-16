@@ -26,7 +26,7 @@ const Index: NextPage = () => {
 
 
     return (
-        <Layout title="Home">
+        <Layout title="User information">
             {/* <div>
                 <h1>{ homeTranslate('title-page') }</h1>
                 <h2>{ commonTranslate('text-test') }</h2>
