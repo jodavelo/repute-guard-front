@@ -5,6 +5,7 @@ import Head from 'next/head';
 import styles from './Layout.module.css';
 import { LayoutContext } from '../../context/layout';
 import { useRouter } from 'next/router';
+import Navbar from '../global/Navbar';
 
 interface Props {
     children: React.ReactNode,
@@ -14,34 +15,42 @@ interface Props {
 export const Layout: FC<Props> = ({ children, title }) => {
 
     const [layoutClassName, setLayoutClassName] = useState('');
+    const [themeClassName, setThemeClassName] = useState('');
     const router = useRouter();
     const { asPath } = router;
-    const { 
+    const {
         isHome,
-        setIsHome
-    } = useContext( LayoutContext );
+        setIsHome,
+        isDarkTheme
+    } = useContext(LayoutContext);
     useEffect(() => {
-        if( isHome ) setLayoutClassName( styles.home );
+        if (isHome) setLayoutClassName(styles.home);
         //else if ( isData ) setLayoutClassName( styles.data );
     }, [])
-    
+
     useEffect(() => {
-        if( asPath == '/' ) {
-            setLayoutClassName( styles.home );
-            setIsHome( true );
+        if (asPath == '/') {
+            setLayoutClassName(styles.index);
+            setIsHome(true);
         }
-        else if( asPath == '/login' ) {
-            setLayoutClassName( styles.login );
+        else if (asPath == '/login') {
+            setLayoutClassName(styles.login);
         }
         // else if ( asPath == '/data/surface-context' ) { 
         //     setProp1ForPage1( styles.data );
         //     setBooleanProp2ForPage1( true );
         // }
-            
-    }, [ asPath ])
 
-    console.log(asPath)
+    }, [asPath])
+
+    useEffect(() => {
+        if( isDarkTheme ) {
+            setThemeClassName( styles['dark-theme'] )
+        }else setThemeClassName( styles['light-theme'] )
+    }, [ isDarkTheme ])
     
+
+
     if (asPath === '/') {
         return (
             <>
@@ -50,8 +59,11 @@ export const Layout: FC<Props> = ({ children, title }) => {
                     <meta name="description" content="Template" />
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
-                <main>
-                    {children}
+                <main className={ themeClassName }>
+                    <div className={ layoutClassName }>
+                        <Navbar />
+                        {children}
+                    </div>
                 </main>
             </>
         );
@@ -60,14 +72,17 @@ export const Layout: FC<Props> = ({ children, title }) => {
     return (
         <div style={{ overflow: 'hidden' }}>
             <Head>
-                <title>{ title }</title>
+                <title>{title}</title>
                 <meta name="description" content="Template" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             {/* <Topbar/>
             <NavbarComponent/> */}
-            <main className={ layoutClassName }>
-                { children }
+            <main className={ themeClassName }>
+                <div className={ layoutClassName }>
+                    <Navbar />
+                    {children}
+                </div>
             </main>
             {/* <Footer/> */}
         </div>

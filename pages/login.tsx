@@ -1,12 +1,48 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { NextPage } from 'next';
 import { Layout } from '@/components/layouts';
 import { Container, Form, Button } from 'react-bootstrap';
+import { LayoutContext } from '@/context/layout';
+
+import styles from './styles.module.css';
+import { hashPassword } from '@/helpers';
 
 const Login: NextPage = () => {
 
-    const [username, setUsername] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleSubmit = async (event: React.FormEvent) => {
+        event.preventDefault(); // Prevenir recargar la página
+        console.log("Usuario:", username);
+        console.log("Contraseña:", password);
+        const hashedPassword = await hashPassword(password);
+        console.log(hashedPassword)
+        // const response = await fetch(`http://localhost:8000/api/v1/auth/${ username }`);
+        // const data = await response.json();
+        // console.log( data )
+        const response = await fetch('http://localhost:8000/api/v1/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username,
+                password: hashedPassword
+            })
+        });
+
+        const data = await response.json();
+
+        if (response.status === 200) {
+            console.log(data.message);
+            // Aquí puedes redirigir al usuario o hacer cualquier otra acción requerida.
+        } else {
+            console.error(data.error);
+            // Mostrar un mensaje de error o realizar alguna otra acción.
+        }
+    }
+    const { isDarkTheme } = useContext(LayoutContext);
 
     // const handleSubmit = async (e: React.FormEvent) => {
     //     e.preventDefault();
@@ -30,15 +66,18 @@ const Login: NextPage = () => {
             <>
                 <Container>
                     <h2>Login</h2>
-                    <Form onSubmit={() => { }}>
-                        {/* <Form onSubmit={handleSubmit}> */}
+                    <Form onSubmit={handleSubmit}>
                         <Form.Group>
-                            <Form.Label>Username</Form.Label>
+                            <Form.Label>User</Form.Label>
                             <Form.Control
                                 type="text"
-                                placeholder="Enter username"
-                                value={username}
-                                onChange={e => setUsername(e.target.value)}
+                                placeholder="Enter your username"
+                                onChange={(e) => setUsername(e.target.value)}
+                                className={isDarkTheme ? 'dark-placeholder dark-form' : 'light-placeholder'}
+                                style={{
+                                    backgroundColor: isDarkTheme ? '#636363' : 'white',
+                                    color: isDarkTheme ? 'white' : 'black'
+                                }}
                             />
                         </Form.Group>
 
@@ -46,19 +85,29 @@ const Login: NextPage = () => {
                             <Form.Label>Password</Form.Label>
                             <Form.Control
                                 type="password"
-                                placeholder="Password"
-                                value={password}
-                                onChange={e => setPassword(e.target.value)}
+                                placeholder="Enter your password"
+                                onChange={(e) => setPassword(e.target.value)}
+                                className={isDarkTheme ? 'dark-placeholder dark-form' : 'light-placeholder'}
+                                style={{
+                                    backgroundColor: isDarkTheme ? '#636363' : 'white',
+                                    color: isDarkTheme ? 'white' : 'black'
+                                }}
                             />
                         </Form.Group>
-                        <Button variant="primary" type="submit">
+
+                        <Button
+                            variant="primary"
+                            type="submit"
+                            className={`${styles['submit-button']} ${isDarkTheme ? styles['dark-button'] : ''}`}
+                        >
                             Submit
                         </Button>
                     </Form>
                 </Container>
             </>
         </Layout>
-    )
+    );
+
 }
 
 export default Login;

@@ -1,0 +1,26 @@
+/* globals.css or any other CSS file */
+.dark-theme .dark-placeholder::placeholder {
+    color: white !important;
+}
+
+.light-theme .light-placeholder::placeholder {
+    color: black !important;
+}
+
+.dark-theme .dark-form {
+    border-radius: 10px;
+}
+
+.submit-button {
+    margin-top: 20px;
+}
+
+.dark-theme .dark-button {
+    background-color: #333; 
+    color: white;
+    border: none;
+}
+
+.dark-theme .dark-button:hover {
+    background-color: #555;  
+}

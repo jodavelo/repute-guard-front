@@ -3,6 +3,7 @@ import { LayoutState } from './';
 
 type LayoutActionType = 
     | { type: '[Layout] - Set is Home', payload: boolean }
+    | { type: '[Theme] - Set is Dark Theme', payload: boolean }
     // | { type: '[Layout] - Unenable is Home',  }
 
 export const layoutReducer = (state: LayoutState, action: LayoutActionType): LayoutState => {
@@ -12,6 +13,11 @@ export const layoutReducer = (state: LayoutState, action: LayoutActionType): Lay
             return {
                 ...state,
                 isHome: action.payload,
+            }
+        case '[Theme] - Set is Dark Theme':
+            return {
+                ...state,
+                isDarkTheme: action.payload,
             }
         // case '[Layout] - Unenable is Home':
         //     return {

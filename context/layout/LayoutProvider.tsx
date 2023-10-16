@@ -3,10 +3,12 @@ import { LayoutContext, layoutReducer } from './'
 
 export interface LayoutState {
     isHome: boolean;
+    isDarkTheme: boolean;
 }
 
 const LAYOUT_INITIAL_STATE: LayoutState = {
     isHome: false,
+    isDarkTheme: false
 }
 
 interface Props {
@@ -21,12 +23,17 @@ export const LayoutProvider: FC<Props> = ({ children }) => {
         dispatch({ type: '[Layout] - Set is Home', payload: settingIsHome });
     }
 
+    const setIsDarkTheme = (settingIsDarkTheme: boolean) => {
+        dispatch({ type: '[Theme] - Set is Dark Theme', payload: settingIsDarkTheme });
+    }
+
     return (
         <LayoutContext.Provider value={{
             ...state,
 
             // Methods
             setIsHome,
+            setIsDarkTheme
         }}>
             { children }
         </LayoutContext.Provider>

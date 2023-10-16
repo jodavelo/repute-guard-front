@@ -7,6 +7,22 @@
     background-color: antiquewhite;
 }
 
+.index {
+    height: 100vh;
+}
+
 .login {
     background-color: transparent;
+    height: 100vh;
+}
+
+
+.dark-theme {
+    background-color: #292929 !important;
+    color: white !important;
+}
+
+.light-theme {
+    background-color: white !important;
+    color: black !important;
 }

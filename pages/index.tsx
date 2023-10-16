@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { NextPage, GetStaticProps, GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -7,10 +7,13 @@ import Link from 'next/link';
 import { Layout } from '../components/layouts';
 import { Container, Row, Col, Card, Alert } from 'react-bootstrap';
 import { User } from '@/interfaces';
+import { LayoutContext } from '@/context/layout';
 
 const Index: NextPage = () => {
 
     const [user, setUser] = useState<User | null>(null);
+    const { isDarkTheme } = useContext(LayoutContext);
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -34,7 +37,7 @@ const Index: NextPage = () => {
                         <Col md={{ span: 6, offset: 3 }}>
                             {user && (
                                 <>
-                                    <Card>
+                                    <Card style={{ backgroundColor: isDarkTheme ? '#474646' : 'white', color: isDarkTheme ? 'white' : 'black' }}>
                                         <Card.Header>User Information</Card.Header>
                                         <Card.Body>
                                             <Card.Title>{user.name}</Card.Title>
@@ -46,7 +49,7 @@ const Index: NextPage = () => {
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>
-                                    <Alert variant="info">
+                                    <Alert variant={isDarkTheme ? 'dark' : 'info'}>
                                         Now that you know the username and password, you can log in to the application by <Link href="/login">clicking here</Link>!
                                     </Alert>
 
