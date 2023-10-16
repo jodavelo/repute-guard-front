@@ -1,0 +1,12 @@
+
+/* extra components: ( videos, sign up o caoursel ) */
+
+.home {
+    height: auto; /* TODO: Para el alto del contenido main */ /* 400 vh without extra components  */
+    /* border: 1px black solid; */
+    background-color: antiquewhite;
+}
+
+.login {
+    background-color: aquamarine;
+}
