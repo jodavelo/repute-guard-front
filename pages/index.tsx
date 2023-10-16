@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { NextPage, GetStaticProps, GetServerSideProps  } from 'next';
+import { NextPage, GetStaticProps, GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import { Layout } from '../components/layouts';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col, Card, Alert } from 'react-bootstrap';
 import { User } from '@/interfaces';
 
 const Index: NextPage = () => {
@@ -19,7 +20,7 @@ const Index: NextPage = () => {
         }
         fetchData()
     }, [])
-    
+
 
     return (
         <Layout title="Home">
@@ -32,18 +33,24 @@ const Index: NextPage = () => {
                     <Row>
                         <Col md={{ span: 6, offset: 3 }}>
                             {user && (
-                                <Card>
-                                    <Card.Header>User Information</Card.Header>
-                                    <Card.Body>
-                                        <Card.Title>{user.name}</Card.Title>
-                                        <Card.Text>
-                                            Username: {user.username}
-                                        </Card.Text>
-                                        <Card.Text>
-                                            Password <b>(no hashed)</b>: {user.password}
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Card>
+                                <>
+                                    <Card>
+                                        <Card.Header>User Information</Card.Header>
+                                        <Card.Body>
+                                            <Card.Title>{user.name}</Card.Title>
+                                            <Card.Text>
+                                                Username: {user.username}
+                                            </Card.Text>
+                                            <Card.Text>
+                                                Password <b>(no hashed)</b>: {user.password}
+                                            </Card.Text>
+                                        </Card.Body>
+                                    </Card>
+                                    <Alert variant="info">
+                                        Now that you know the username and password, you can log in to the application by <Link href="/login">clicking here</Link>!
+                                    </Alert>
+
+                                </>
                             )}
                         </Col>
                     </Row>
