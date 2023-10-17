@@ -15,6 +15,7 @@ import { SidebarComponent } from '@/components/tools/Sidebar';
 
 
 import styles from './home.module.css';
+import IPTable from '@/components/page/IPTable';
 
 
 const Home: NextPage = () => {
@@ -47,7 +48,8 @@ const Home: NextPage = () => {
                     </Col>
                     <Col xs={ 12 } md={ contentColumns } lg={ contentColumns } xl={ contentColumns } xxl={ contentColumns }>
                         <div className={ styles['box-home-content'] }>
-                            tabla
+                            <h2>List of Ips</h2>
+                            <IPTable/>
                         </div>
                     </Col>
                 </Row>

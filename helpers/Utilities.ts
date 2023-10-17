@@ -8,3 +8,9 @@ export const hashPassword = async(password: string) => {
 
     return hashHex;
 }
+
+export const getScoreClass = (score: number) => {
+    if (score < 40) return 'text-success'; // Bootstrap clase para color verde
+    if (score <= 80) return 'text-warning'; // Bootstrap clase para color naranja
+    return 'text-danger'; // Bootstrap clase para color rojo
+};
