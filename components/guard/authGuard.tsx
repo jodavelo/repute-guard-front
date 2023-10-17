@@ -1,9 +1,8 @@
-
 import React, { ComponentType, useEffect, PropsWithChildren } from 'react';
 import { useRouter } from 'next/router';
 
 const withAuthGuard = (WrappedComponent: ComponentType) => {
-    return (props: PropsWithChildren<any>) => {
+    const WithAuthGuardComponent = (props: PropsWithChildren<any>) => {
         const router = useRouter();
         
         useEffect(() => {
@@ -15,6 +14,10 @@ const withAuthGuard = (WrappedComponent: ComponentType) => {
 
         return <WrappedComponent {...props} />;
     }
+
+    WithAuthGuardComponent.displayName = 'WithAuthGuardComponent';
+    
+    return WithAuthGuardComponent;
 }
 
 export default withAuthGuard;

@@ -14,15 +14,45 @@ import withAuthGuard from '@/components/guard/authGuard';
 import { SidebarComponent } from '@/components/tools/Sidebar';
 
 
+import styles from './home.module.css';
+
+
 const Home: NextPage = () => {
 
-    const [user, setUser] = useState<User | null>(null);
-    const { isDarkTheme } = useContext(LayoutContext);
+    const { sideBarCollapsed } = useContext(LayoutContext);
+    const [sideBarColumns, setSideBarColumns] = useState(0);
+    const [contentColumns, setContentColumns] = useState(0);
+
+    useEffect(() => {
+        if(sideBarCollapsed){
+            setSideBarColumns( 1 );
+            setContentColumns( 11 );
+        }else {
+            setSideBarColumns( 2 );
+            setContentColumns( 10 );
+        }
+    }, [ sideBarCollapsed ])
+    
+
+    // const [user, setUser] = useState<User | null>(null);
+    // const { isDarkTheme } = useContext(LayoutContext);
+
+
     return (
         <Layout title="Home">
-            <>
-                <SidebarComponent/>
-            </>
+            <Container fluid>
+                <Row>
+                    <Col xs={ 12 } md={ sideBarColumns } lg={ sideBarColumns } xl={ sideBarColumns } xxl={ sideBarColumns }>
+                        <SidebarComponent/>
+                    </Col>
+                    <Col xs={ 12 } md={ contentColumns } lg={ contentColumns } xl={ contentColumns } xxl={ contentColumns }>
+                        <div className={ styles['box-home-content'] }>
+                            tabla
+                        </div>
+                    </Col>
+                </Row>
+                
+            </Container>
         </Layout>
     )
 }

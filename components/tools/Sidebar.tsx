@@ -18,6 +18,7 @@ export const SidebarComponent = () => {
             rtl={false}
             collapsed={ sideBarCollapsed }
             toggled={ true }
+            width='110%'
         >
             <Menu
                 menuItemStyles={{
