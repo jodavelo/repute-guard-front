@@ -22,14 +22,14 @@ type IpDetail = {
     description: string;
 };
 
-const IPTable = () => {
+const PositivesNegativesTable = () => {
     const { isDarkTheme } = useContext(LayoutContext);
     const [data, setData] = useState<IpDetail[]>([]);
     const [currentPage, setCurrentPage] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(5);
 
     useEffect(() => {
-        fetch('http://localhost:8000/malicious-ips')
+        fetch('http://localhost:8000/positives-negatives')
             .then(response => response.json())
             .then(data => setData(data.data))
             .catch(error => console.error('Error:', error));
@@ -89,4 +89,4 @@ const IPTable = () => {
     );
 }
 
-export default IPTable;
+export default PositivesNegativesTable;

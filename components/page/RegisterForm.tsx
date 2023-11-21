@@ -51,7 +51,7 @@ const RegisterForm = () => {
                         theme: isDarkTheme ? "dark" : "light",
                     });
                 }
-                console.log(message);
+                //console.log(message);
             } else {
                 console.error("Error to register email");
             }

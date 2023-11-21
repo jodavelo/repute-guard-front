@@ -10,7 +10,7 @@ export interface LayoutState {
 
 const LAYOUT_INITIAL_STATE: LayoutState = {
     isHome: false,
-    isDarkTheme: true,
+    isDarkTheme: false,
     sideBarCollapsed: false,
     isLogged: false
 }

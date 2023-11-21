@@ -32,7 +32,7 @@ const Login: NextPage = () => {
 
         const data = await response.json();
         const { login } = data;
-        console.log(login)
+        //console.log(login)
 
         if (login) {
             router.push('/home');

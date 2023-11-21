@@ -38,9 +38,9 @@ export const SidebarComponent = () => {
                     },
                   }}
             >
-                <MenuItem active={ true } component={<Link href="/ip-detail" />}> Home</MenuItem>
-                <MenuItem component={<Link href="/ip-detail" />}> Location</MenuItem>
-                <MenuItem component={<Link href="/ip-detail" />}> E-commerce</MenuItem>
+                <MenuItem active={ true } component={<Link href="/home" />}> Malicious IPs</MenuItem>
+                <MenuItem component={<Link href="/positive-negatives" />}> Possitive - Negatives</MenuItem>
+                {/* <MenuItem component={<Link href="/ip-detail" />}> E-commerce</MenuItem> */}
             </Menu>
         </Sidebar>
     );
