@@ -18,27 +18,23 @@ const Login: NextPage = () => {
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault(); // Prevenir recargar la página
-        console.log("Usuario:", username);
-        console.log("Contraseña:", password);
         const hashedPassword = await hashPassword(password);
-        console.log(hashedPassword)
-        // const response = await fetch(`http://localhost:8000/api/v1/auth/${ username }`);
-        // const data = await response.json();
-        // console.log( data )
-        const response = await fetch('http://localhost:8000/api/v1/login', {
+        const response = await fetch('http://127.0.0.1:8000/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                username,
+                email: username,
                 password: hashedPassword
             })
         });
 
         const data = await response.json();
+        const { login } = data;
+        console.log(login)
 
-        if (response.status === 200) {
+        if (login) {
             router.push('/home');
             setIsLogged( true );
             toast.success('Login Successfully!', {
@@ -65,27 +61,8 @@ const Login: NextPage = () => {
                 theme: isDarkTheme ? "dark" : "light",
             });
             console.error(data.error);
-            // Mostrar un mensaje de error o realizar alguna otra acción.
         }
     }
-    
-
-    // const handleSubmit = async (e: React.FormEvent) => {
-    //     e.preventDefault();
-
-    //     // Aquí se enviarían los datos a la API para iniciar sesión
-    //     const response = await fetch('http://localhost:8000/api/v1/login', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({ username, password })
-    //     });
-
-    //     const data = await response.json();
-
-    //     // Aquí puedes manejar la respuesta, como guardar el token, redirigir al usuario, etc.
-    // };
 
     return (
         <Layout title="Login">
