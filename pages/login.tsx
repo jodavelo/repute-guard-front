@@ -94,10 +94,10 @@ const Login: NextPage = () => {
                     <h2>Login</h2>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group>
-                            <Form.Label>User</Form.Label>
+                            <Form.Label>Email</Form.Label>
                             <Form.Control
                                 type="text"
-                                placeholder="Enter your username"
+                                placeholder="Enter your email"
                                 onChange={(e) => setUsername(e.target.value)}
                                 className={isDarkTheme ? 'dark-placeholder dark-form' : 'light-placeholder'}
                                 style={{

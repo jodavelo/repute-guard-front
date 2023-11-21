@@ -8,21 +8,22 @@ import { Layout } from '../components/layouts';
 import { Container, Row, Col, Card, Alert } from 'react-bootstrap';
 import { User } from '@/interfaces';
 import { LayoutContext } from '@/context/layout';
+import RegisterForm from '@/components/page/RegisterForm';
 
 const Index: NextPage = () => {
 
-    const [user, setUser] = useState<User | null>(null);
+    // const [user, setUser] = useState<User | null>(null);
     const { isDarkTheme } = useContext(LayoutContext);
 
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const res = await fetch('http://localhost:8000/api/v1/user');
-            const data = await res.json();
-            setUser(data);
-        }
-        fetchData()
-    }, [])
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const res = await fetch('http://localhost:8000/api/v1/user');
+    //         const data = await res.json();
+    //         setUser(data);
+    //     }
+    //     fetchData()
+    // }, [])
 
 
     return (
@@ -35,7 +36,8 @@ const Index: NextPage = () => {
                 <Container className="mt-5">
                     <Row>
                         <Col md={{ span: 6, offset: 3 }}>
-                            {user && (
+                            <RegisterForm/>
+                            {/* {user && (
                                 <>
                                     <Card style={{ backgroundColor: isDarkTheme ? '#474646' : 'white', color: isDarkTheme ? 'white' : 'black' }}>
                                         <Card.Header>User Information</Card.Header>
@@ -54,7 +56,7 @@ const Index: NextPage = () => {
                                     </Alert>
 
                                 </>
-                            )}
+                            )} */}
                         </Col>
                     </Row>
                 </Container>
