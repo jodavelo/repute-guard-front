@@ -5,6 +5,7 @@
     height: auto; /* TODO: Para el alto del contenido main */ /* 400 vh without extra components  */
     /* border: 1px black solid; */
     background-color: transparent;
+    overflow-y: auto;
 }
 
 .index, .login, .home {

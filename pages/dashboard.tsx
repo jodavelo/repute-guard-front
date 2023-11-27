@@ -23,6 +23,7 @@ import DetectionPieChart from '@/components/page/DetectionPieChart';
 import DetectionTypePieChart from '@/components/page/DetectionTypePieChart';
 import SoarBlocksCard from '@/components/page/SoarBlocksCard';
 import CostTable from '@/components/page/CostTable';
+import MapChart from '@/components/page/MapChart';
 
 
 const Dashboard: NextPage = () => {
@@ -59,8 +60,8 @@ const Dashboard: NextPage = () => {
                             <hr />
                             </div>
                         </div>
-                        <div className="row" style={{height: '120vh' }}>
-                            <div className="col-12" style={{ height: '60vh' }}>
+                        <div className="row" style={{height: '80vh' }}>
+                            <div className="col-12" style={{ height: '70vh' }}>
                                 <div className="row" style={{ height: '100%' }}>
                                     <div className="col-12 col-lg-6" >
                                         <div className="row" style={{ height: '100%' }}>
@@ -92,16 +93,9 @@ const Dashboard: NextPage = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-12" style={{ height: '60vh' }}>
-                                <div className="row" style={{ height: '100%' }}>
-                                    <div className="col-12 col-lg-6" style={{ background: 'green' }}>
-
-                                    </div>
-                                    <div className="col-12 col-lg-6" style={{ background: 'yellow' }}>
-
-                                    </div>
-                                </div>
-                            </div>
+                            {/* <div className="col-12" style={{ height: '80vh' }}>
+                                <MapChart/>
+                            </div> */}
                         </div>
                     </Col>
                 </Row>

@@ -35,7 +35,7 @@ const Login: NextPage = () => {
         //console.log(login)
 
         if (login) {
-            router.push('/home');
+            router.push('/dashboard');
             setIsLogged( true );
             toast.success('Login Successfully!', {
                 position: "top-right",

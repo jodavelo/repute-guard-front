@@ -18,19 +18,26 @@ const Navbar: FC = () => {
     };
 
     const onClickMenuIcon = () => {
-        setIsCollapsedSidebar( !sideBarCollapsed )
+        setIsCollapsedSidebar(!sideBarCollapsed)
     }
 
     const onClickLogout = () => {
-        setIsLogged( false );
+        setIsLogged(false);
         localStorage.removeItem('token');
         router.push('/home');
     }
 
     return (
-        <nav style={{ display: 'flex', justifyContent: 'space-between', padding: '1rem' }}>  
+        <nav style={{ display: 'flex', justifyContent: 'space-between', padding: '1rem', position: 'relative', marginBottom: '80px' }}>
+            {/* Contenedor del logo */}
+            <div style={{ position: 'absolute', top: 0, left: 80 }}>
+                <img src={isDarkTheme ? '/image_white_logo.png' : '/logo.png'} alt="Logo" style={{ height: '130px', width: 'auto' }} />
+            </div>
+            <h1 style={{ position: 'absolute', width: '100%', textAlign: 'center', margin: '0', fontFamily: 'Roboto' }}>
+                SOAR-CTI-IDS
+            </h1>
             {
-                isLogged ? <Button onClick={ onClickMenuIcon } variant="text">{ isLogged ? <MenuIcon/> : undefined }</Button> : undefined
+                isLogged ? <Button onClick={onClickMenuIcon} variant="text">{isLogged ? <MenuIcon /> : undefined}</Button> : undefined
             }
             <ButtonGroup variant="text" aria-label="text button group">
                 <Switch
@@ -40,7 +47,7 @@ const Navbar: FC = () => {
                     inputProps={{ 'aria-label': 'switch theme' }}
                 />
                 {
-                    isLogged ? <Button onClick={ onClickLogout } variant="text"><ExitToAppIcon/></Button> : undefined
+                    isLogged ? <Button onClick={onClickLogout} variant="text"><ExitToAppIcon /></Button> : undefined
                 }
             </ButtonGroup>
         </nav>

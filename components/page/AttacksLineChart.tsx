@@ -91,7 +91,7 @@ const AttacksLineChart = () => {
     };
 
     return (
-        <div style={{ width: '85%', height: '200px' }}>
+        <div style={{ width: '85%', height: '400px' }}>
             <Line data={chartData} options={options} />
         </div>
     );

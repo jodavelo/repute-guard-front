@@ -19,7 +19,7 @@ import IPTable from '@/components/page/IPTable';
 import SelectComponent from '@/components/page/SelectComponent';
 
 
-const Home: NextPage = () => {
+const Settings: NextPage = () => {
 
     const { sideBarCollapsed } = useContext(LayoutContext);
     const [sideBarColumns, setSideBarColumns] = useState(0);
@@ -41,7 +41,7 @@ const Home: NextPage = () => {
 
 
     return (
-        <Layout title="Home">
+        <Layout title="Settings">
             <Container fluid>
                 <Row>
                     <Col xs={ 12 } md={ sideBarColumns } lg={ sideBarColumns } xl={ sideBarColumns } xxl={ sideBarColumns }>
@@ -49,8 +49,7 @@ const Home: NextPage = () => {
                     </Col>
                     <Col style={{ padding: '40px' }} xs={ 12 } md={ contentColumns } lg={ contentColumns } xl={ contentColumns } xxl={ contentColumns }>
                         <div className={ styles['box-home-content'] }>
-                            <h3>Table of ips addresses detected as malicious</h3>
-                            <IPTable/>
+                            <SelectComponent/>
                         </div>
                     </Col>
                 </Row>
@@ -72,4 +71,4 @@ const Home: NextPage = () => {
 
 
 //export default Home;
-export default withAuthGuard(Home);
+export default withAuthGuard(Settings);
