@@ -1,9 +1,8 @@
 import { useEffect, useState, useContext } from 'react';
-import { NextPage, GetStaticProps, GetServerSideProps } from 'next';
+import { NextPage } from 'next';
 
 import { Layout } from '../components/layouts';
-import { Container, Row, Col, Card, Alert } from 'react-bootstrap';
-import { User } from '@/interfaces';
+import { Container, Row, Col } from 'react-bootstrap';
 import { LayoutContext } from '@/context/layout';
 
 import withAuthGuard from '@/components/guard/authGuard';
@@ -11,10 +10,10 @@ import { SidebarComponent } from '@/components/tools/Sidebar';
 
 
 import styles from './home.module.css';
-import PositiveNegativesTable from '@/components/page/PositiveNegativesTable';
+import FalsePositivesTable from '@/components/page/FalsePositivesTable';
 
 
-const PositiveNegativesPage: NextPage = () => {
+const FalsePositivesPage: NextPage = () => {
 
     const { sideBarCollapsed } = useContext(LayoutContext);
     const [sideBarColumns, setSideBarColumns] = useState(0);
@@ -31,10 +30,6 @@ const PositiveNegativesPage: NextPage = () => {
     }, [ sideBarCollapsed ])
     
 
-    // const [user, setUser] = useState<User | null>(null);
-    // const { isDarkTheme } = useContext(LayoutContext);
-
-
     return (
         <Layout title="Home2">
             <Container fluid>
@@ -45,7 +40,7 @@ const PositiveNegativesPage: NextPage = () => {
                     <Col style={{ padding: '40px' }} xs={ 12 } md={ contentColumns } lg={ contentColumns } xl={ contentColumns } xxl={ contentColumns }>
                         <div className={ styles['box-home-content'] }>
                             <h3>Table of ip addresses detected as possible malicious ip addresses</h3>
-                            <PositiveNegativesTable/>
+                            <FalsePositivesTable/>
                         </div>
                     </Col>
                 </Row>
@@ -55,4 +50,4 @@ const PositiveNegativesPage: NextPage = () => {
     )
 }
 
-export default withAuthGuard(PositiveNegativesPage);
+export default withAuthGuard(FalsePositivesPage);

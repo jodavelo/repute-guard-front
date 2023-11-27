@@ -17,6 +17,7 @@ import { SidebarComponent } from '@/components/tools/Sidebar';
 import styles from './home.module.css';
 import IPTable from '@/components/page/IPTable';
 import SelectComponent from '@/components/page/SelectComponent';
+import AttacksTable from '@/components/page/AttacksTable';
 
 
 const Home: NextPage = () => {
@@ -50,7 +51,8 @@ const Home: NextPage = () => {
                     <Col style={{ padding: '40px' }} xs={ 12 } md={ contentColumns } lg={ contentColumns } xl={ contentColumns } xxl={ contentColumns }>
                         <div className={ styles['box-home-content'] }>
                             <h3>Table of ips addresses detected as malicious</h3>
-                            <IPTable/>
+                            {/* <IPTable/> */}
+                            <AttacksTable/>
                         </div>
                     </Col>
                 </Row>
