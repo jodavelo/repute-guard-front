@@ -38,6 +38,7 @@ export const SidebarComponent = () => {
                     },
                   }}
             >
+                <MenuItem active={ true } component={<Link href="/dashboard" />}> Dashboard</MenuItem>
                 <MenuItem active={ true } component={<Link href="/home" />}> Malicious IPs</MenuItem>
                 <MenuItem component={<Link href="/positive-negatives" />}> Possitive - Negatives</MenuItem>
                 {/* <MenuItem component={<Link href="/ip-detail" />}> E-commerce</MenuItem> */}
