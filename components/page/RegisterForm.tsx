@@ -6,9 +6,21 @@ import { Card, Form, Button } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { LayoutContext } from '@/context/layout';
 
+const lightThemeStyles = {
+    backgroundColor: 'white',
+    color: 'black',
+};
+
+const darkThemeStyles = {
+    backgroundColor: '#424242',
+    color: 'white',
+};
+
+
 const RegisterForm = () => {
     const [email, setEmail] = useState('');
     const { isDarkTheme, setIsLogged } = useContext(LayoutContext);
+    const themeStyles = isDarkTheme ? darkThemeStyles : lightThemeStyles;
     const router = useRouter()
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -19,13 +31,13 @@ const RegisterForm = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ email }) 
+                body: JSON.stringify({ email })
             });
-    
+
             if (response.ok) {
                 const data = await response.json();
                 const { message } = data;
-                if( message == 'User already exists' ){
+                if (message == 'User already exists') {
                     toast.error('User already exists', {
                         position: "top-right",
                         autoClose: 5000,
@@ -37,9 +49,9 @@ const RegisterForm = () => {
                         theme: isDarkTheme ? "dark" : "light",
                     });
                 }
-                if( message == 'User created successfully' ){
+                if (message == 'User created successfully') {
                     router.push('/login');
-                    setIsLogged( false );
+                    setIsLogged(false);
                     toast.success('User created successfully', {
                         position: "top-right",
                         autoClose: 5000,
@@ -61,7 +73,7 @@ const RegisterForm = () => {
     };
 
     return (
-        <Card className="p-4">
+        <Card style={themeStyles} className="p-4">
             <Card.Body>
                 <Card.Title>Please enter your email address to register.</Card.Title>
                 <Form onSubmit={handleSubmit}>
