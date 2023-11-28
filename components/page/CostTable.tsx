@@ -11,7 +11,7 @@ const CostTable = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const apiCost = 500000;
+            const apiCost = 1000;
             const response = await fetch('http://localhost:8000/attacks_by_detection_type');
             const data = await response.json();
             setIndicatorsOfCompromiseDB(data[0].count)
@@ -32,8 +32,8 @@ const CostTable = () => {
             </thead>
             <tbody>
                 <tr>
-                    <td># Request: 1000</td>
-                    <td>Total cost API: 500000</td>
+                    <td># Request: 500000</td>
+                    <td>Total cost API: 1000 USD</td>
                     <td>1 Value: 0.002</td>
                 </tr>
                 <tr style={ isDarkTheme ?  { background: '#333', color: '#fff', fontWeight: 'bolder' } : { background: '#f2f2f2', color: '#000', fontWeight: 'bolder' }}>

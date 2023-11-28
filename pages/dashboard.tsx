@@ -67,10 +67,10 @@ const Dashboard: NextPage = () => {
                                         <div className="row" style={{ height: '100%' }}>
                                             <div className="col-6">
                                                 <AttackChart/>
-                                            </div>
-                                            <div className="col-6">
-                                                <SoarBlocksCard/>
                                                 <CostTable/>
+                                            </div>
+                                            <div className="col-6" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                                <SoarBlocksCard/>
                                             </div>
                                         </div>
                                     </div>  
