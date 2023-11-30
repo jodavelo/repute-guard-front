@@ -9,12 +9,26 @@ import styles from './styles.module.css';
 import { hashPassword } from '@/helpers';
 import { toast } from 'react-toastify';
 
+export type StoredItem = {
+    value: string;
+    timestamp: number;
+}
+
 const Login: NextPage = () => {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const { isDarkTheme, setIsLogged } = useContext(LayoutContext);
     const router = useRouter()
+
+    const saveItem = (key: string, value: string): void => {
+        const item: StoredItem = {
+            value,
+            timestamp: new Date().getTime()
+        };
+        localStorage.setItem(key, JSON.stringify(item));
+    }
+
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault(); // Prevenir recargar la página
@@ -36,7 +50,7 @@ const Login: NextPage = () => {
 
         if (login) {
             router.push('/dashboard');
-            setIsLogged( true );
+            setIsLogged(true);
             toast.success('Login Successfully!', {
                 position: "top-right",
                 autoClose: 5000,
@@ -47,7 +61,7 @@ const Login: NextPage = () => {
                 progress: undefined,
                 theme: isDarkTheme ? "dark" : "light",
             });
-            localStorage.setItem('token', 'success');
+            saveItem('token', 'success')
             // console.log(data.message);
         } else {
             toast.error('Username or password incorrect!', {

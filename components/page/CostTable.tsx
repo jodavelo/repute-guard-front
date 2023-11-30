@@ -16,8 +16,8 @@ const CostTable = () => {
             const data = await response.json();
             setIndicatorsOfCompromiseDB(data[0].count)
             setIpReputationDB(data[1].count)
-            setIndicatorsOfCompromiseTotal( apiCost - ( data[0].count * 0.002 ) )
-            setIpReputationTotal( data[1].count * 0.002 )
+            setIndicatorsOfCompromiseTotal(Number((data[0].count * 0.002).toFixed(3)));
+            setIndicatorsOfCompromiseTotal(Number((data[1].count * 0.002).toFixed(3)));
         };
 
         fetchData();
@@ -44,12 +44,12 @@ const CostTable = () => {
                 <tr>
                     <td>{ indicatorsOfCompromiseDB }</td>
                     <td>Value saved BD IOC</td>
-                    <td># EVENTS * VALUE : <span style={ isDarkTheme ? { color: '#fff', fontWeight: 'bolder' } : { color: '#000', fontWeight: 'bolder' } }>{ indicatorsOfCompromiseTotal } USD </span></td>
+                    <td><span style={ isDarkTheme ? { color: '#fff', fontWeight: 'bolder' } : { color: '#000', fontWeight: 'bolder' } }>{ indicatorsOfCompromiseTotal } USD </span></td>
                 </tr>
                 <tr>
                     <td>{ ipReputationDB }</td>
                     <td>Value IP reputation</td>
-                    <td># EVENTS * VALUE: <span style={ isDarkTheme ? { color: '#fff', fontWeight: 'bolder' } : { color: '#000', fontWeight: 'bolder' } }>{ ipReputationTotal } USD </span></td>
+                    <td><span style={ isDarkTheme ? { color: '#fff', fontWeight: 'bolder' } : { color: '#000', fontWeight: 'bolder' } }>{ ipReputationTotal } USD </span></td>
                 </tr>
             </tbody>
         </table>

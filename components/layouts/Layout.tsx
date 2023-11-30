@@ -6,6 +6,7 @@ import styles from './Layout.module.css';
 import { LayoutContext } from '../../context/layout';
 import { useRouter } from 'next/router';
 import Navbar from '../global/Navbar';
+import { StoredItem } from '@/pages/login';
 
 interface Props {
     children: React.ReactNode,
@@ -23,8 +24,30 @@ export const Layout: FC<Props> = ({ children, title }) => {
         setIsHome,
         isDarkTheme
     } = useContext(LayoutContext);
+
+    const getItem = (key: string): string | null => {
+        const itemStr = localStorage.getItem(key);
+        if (!itemStr) {
+            return null;
+        }
+
+        const item: StoredItem = JSON.parse(itemStr);
+        const now = new Date().getTime();
+
+        // 2 horas en milisegundos
+        const twoHours = 2 * 60 * 60 * 1000;
+
+        if (now - item.timestamp > twoHours) {
+            localStorage.removeItem(key);
+            return null;
+        }
+
+        return item.value;
+    }
+
     useEffect(() => {
         if (isHome) setLayoutClassName(styles.home);
+        getItem('token')
         //else if ( isData ) setLayoutClassName( styles.data );
     }, [])
 
@@ -47,11 +70,11 @@ export const Layout: FC<Props> = ({ children, title }) => {
     }, [asPath])
 
     useEffect(() => {
-        if( isDarkTheme ) {
-            setThemeClassName( styles['dark-theme'] )
-        }else setThemeClassName( styles['light-theme'] )
-    }, [ isDarkTheme ])
-    
+        if (isDarkTheme) {
+            setThemeClassName(styles['dark-theme'])
+        } else setThemeClassName(styles['light-theme'])
+    }, [isDarkTheme])
+
 
 
     if (asPath === '/') {
@@ -62,8 +85,8 @@ export const Layout: FC<Props> = ({ children, title }) => {
                     <meta name="description" content="Template" />
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
-                <main className={ themeClassName }>
-                    <div className={ layoutClassName }>
+                <main className={themeClassName}>
+                    <div className={layoutClassName}>
                         <Navbar />
                         {children}
                     </div>
@@ -81,8 +104,8 @@ export const Layout: FC<Props> = ({ children, title }) => {
             </Head>
             {/* <Topbar/>
             <NavbarComponent/> */}
-            <main className={ themeClassName }>
-                <div className={ layoutClassName }>
+            <main className={themeClassName}>
+                <div className={layoutClassName}>
                     <Navbar />
                     {children}
                 </div>

@@ -60,7 +60,7 @@ const Dashboard: NextPage = () => {
                             <hr />
                             </div>
                         </div>
-                        <div className="row" style={{height: '80vh' }}>
+                        <div className="row" style={{height: '100vh' }}>
                             <div className="col-12" style={{ height: '70vh' }}>
                                 <div className="row" style={{ height: '100%' }}>
                                     <div className="col-12 col-lg-6" >
