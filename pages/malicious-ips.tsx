@@ -50,7 +50,7 @@ const Malicious: NextPage = () => {
                     </Col>
                     <Col style={{ padding: '40px' }} xs={ 12 } md={ contentColumns } lg={ contentColumns } xl={ contentColumns } xxl={ contentColumns }>
                         <div className={ styles['box-home-content'] }>
-                            <h3>Table of ips addresses detected as malicious</h3>
+                            <h3>IP addresses detected as malicious in the CTI</h3>
                             {/* <IPTable/> */}
                             <AttacksTable/>
                         </div>

@@ -39,7 +39,7 @@ const FalsePositivesPage: NextPage = () => {
                     </Col>
                     <Col style={{ padding: '40px' }} xs={ 12 } md={ contentColumns } lg={ contentColumns } xl={ contentColumns } xxl={ contentColumns }>
                         <div className={ styles['box-home-content'] }>
-                            <h3>Table of ip addresses detected as possible malicious ip addresses</h3>
+                            <h3>IP addresses not detected as malicious in the CTI</h3>
                             <FalsePositivesTable/>
                         </div>
                     </Col>
