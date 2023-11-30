@@ -17,7 +17,7 @@ const CostTable = () => {
             setIndicatorsOfCompromiseDB(data[0].count)
             setIpReputationDB(data[1].count)
             setIndicatorsOfCompromiseTotal(Number((data[0].count * 0.002).toFixed(3)));
-            setIndicatorsOfCompromiseTotal(Number((data[1].count * 0.002).toFixed(3)));
+            setIpReputationTotal( data[1].count * 0.002 );
         };
 
         fetchData();
