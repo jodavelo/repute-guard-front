@@ -61,7 +61,8 @@ const Login: NextPage = () => {
                 progress: undefined,
                 theme: isDarkTheme ? "dark" : "light",
             });
-            saveItem('token', 'success')
+            localStorage.setItem('token', 'success')
+            //saveItem('token', 'success')
             // console.log(data.message);
         } else {
             toast.error('Username or password incorrect!', {

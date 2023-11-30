@@ -22,37 +22,25 @@ export const Layout: FC<Props> = ({ children, title }) => {
     const {
         isHome,
         setIsHome,
-        isDarkTheme
+        isDarkTheme,
+        setIsLogged
     } = useContext(LayoutContext);
 
-    const getItem = (key: string): string | null => {
-        const itemStr = localStorage.getItem(key);
-        if (!itemStr) {
-            return null;
-        }
-
-        const item: StoredItem = JSON.parse(itemStr);
-        const now = new Date().getTime();
-
-        // 2 horas en milisegundos
-        const twoHours = 2 * 60 * 60 * 1000;
-
-        if (now - item.timestamp > twoHours) {
-            localStorage.removeItem(key);
-            return null;
-        }
-
-        return item.value;
-    }
 
     useEffect(() => {
         if (isHome) setLayoutClassName(styles.home);
-        getItem('token')
+        //getItem('token')
         //else if ( isData ) setLayoutClassName( styles.data );
     }, [])
 
     useEffect(() => {
-        if (asPath == '/') {
+        if(asPath == 'malicious-ips' || asPath == 'home' || asPath == 'false-positives' || asPath == 'bashboard' || asPath == 'settings' || asPath == 'positive-negatives'){
+            const local = localStorage.getItem('token');
+            if( local != undefined || local != null ) {
+                setIsLogged(true)
+            }
+        }
+        else if (asPath == '/') {
             setLayoutClassName(styles.index);
             setIsHome(true);
         }
