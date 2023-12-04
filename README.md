@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SOAR-CTI-IDS
 
-## Getting Started
+## Description
+This project, titled "SOAR-CTI-IDS", has been meticulously developed as a master's thesis for the degree of Master in Digital Security at the Pontificia Universidad Javeriana, Bogotá, Colombia. It represents a significant effort in the field of cybersecurity by authors Sergio Viasus Arias and José Daniel Vergara Lozano, under the expert guidance of Engineer Ivan Camilo Castellanos Romero. The project focuses on integrating Security Orchestration, Automation, and Response (SOAR) with Cyber Threat Intelligence (CTI) and an Intrusion Detection System (IDS), creating a robust system for real-time threat detection and response.
 
-First, run the development server:
+## Authors
+- Sergio Viasus Arias
+- José Daniel Vergara Lozano
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Project Director
+- Engineer Ivan Camilo Castellanos Romero
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## University
+- Pontificia Universidad Javeriana, Bogotá, Colombia
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Degree
+- Master's in Digital Security
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Year 
+- 2023
 
-## Learn More
+## Project Overview
+The "SOAR-CTI-IDS" project leverages advanced technologies and methodologies to create a dynamic system capable of detecting and responding to cyber threats in real time. By integrating SOAR with CTI, the system efficiently identifies potential malicious IPs using tools like Suricata, assesses them through IPQualityScore API for fraud scoring, and responds by updating firewall rules and maintaining a database of indicators of compromise. This project not only enhances cybersecurity measures but also showcases innovative approaches to digital security challenges.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Key Features
+- Real-time threat detection using Suricata IDS.
+- Automated response with SOAR capabilities.
+- Cyber Threat Intelligence integration for accurate IP risk assessment.
+- Dynamic firewall rule management based on threat analysis.
+- Comprehensive database of indicators of compromise.
